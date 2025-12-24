@@ -5,20 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Constanza 🖤</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg-dark: #0a0a0a;
-            /* Negro profundo */
             --card-bg: #161616;
-            /* Negro un poco más claro para las cajas */
             --kuromi-purple: #9d50bb;
             --kuromi-pink: #ff80ab;
             --text-main: #e0e0e0;
         }
 
+        /* ====== BASE ====== */
         body {
-            background-color: var(--bg-dark);
+            background: radial-gradient(circle at top, #1a0f1f 0%, #0a0a0a 60%);
             font-family: 'Quicksand', sans-serif;
             margin: 0;
             padding: 0;
@@ -29,9 +30,9 @@
             overflow-x: hidden;
         }
 
-        /* HEADER */
+        /* ====== HEADER ====== */
         header {
-            background-color: #000;
+            background: linear-gradient(180deg, #000, #14001a);
             width: 100%;
             padding: 40px 0;
             display: flex;
@@ -54,7 +55,7 @@
             color: white;
             margin: 0;
             font-size: 1.6rem;
-            text-shadow: 0 0 10px var(--kuromi-purple);
+            text-shadow: 0 0 12px var(--kuromi-purple);
         }
 
         header h1 span {
@@ -62,18 +63,33 @@
         }
 
         .kuromi-head {
-            width: 55px;
-            filter: drop-shadow(0 0 5px var(--kuromi-pink));
+            width: 100px;
+            filter: drop-shadow(0 0 8px var(--kuromi-pink));
+            animation: float 3s ease-in-out infinite;
         }
 
-        /* CONTENIDO */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* ====== CONTENIDO ====== */
         .main-content {
             width: 90%;
             max-width: 450px;
             padding: 25px 0;
         }
 
-        /* SECCIONES (Tarjetas Oscuras) */
+        /* ====== TARJETAS ====== */
         .section-box {
             background: var(--card-bg);
             border-radius: 20px;
@@ -81,11 +97,25 @@
             margin-bottom: 30px;
             border: 1px solid #333;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-            transition: 0.3s;
+            animation: fadeUp 0.9s ease forwards;
+            transition: transform 0.3s, border 0.3s;
         }
 
         .section-box:hover {
+            transform: scale(1.02);
             border-color: var(--kuromi-purple);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section-box h2 {
@@ -105,16 +135,16 @@
             color: #ccc;
         }
 
-        /* CONTENEDOR DE MEDIA RESPONSIVE (Para que no se corte en el cel) */
+        /* ====== MEDIA ====== */
         .media-container {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
-            /* Ratio 16:9 */
             height: 0;
             overflow: hidden;
             border-radius: 12px;
             margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
         }
 
         .media-container iframe {
@@ -126,7 +156,7 @@
             border: 0;
         }
 
-        /* LISTA DE COSAS QUE ME ENCANTAN (Scrollable) */
+        /* ====== LISTA ====== */
         .reasons-list {
             max-height: 300px;
             overflow-y: auto;
@@ -141,7 +171,7 @@
             border-left: 3px solid var(--kuromi-purple);
         }
 
-        /* MENSAJE FINAL */
+        /* ====== MENSAJE FINAL ====== */
         .final-message {
             background: linear-gradient(145deg, #161616, #000);
             color: white;
@@ -149,10 +179,39 @@
             border-radius: 25px;
             text-align: center;
             border: 2px dashed var(--kuromi-purple);
-            margin-bottom: 60px;
+            margin-bottom: 30px;
+            animation: glow 2s infinite alternate;
         }
 
-        /* ANIMACIÓN CORAZÓN */
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px rgba(157, 80, 187, 0.3);
+            }
+
+            to {
+                box-shadow: 0 0 25px rgba(255, 128, 171, 0.6);
+            }
+        }
+
+        /* ====== BOTÓN EXTRA ====== */
+        .love-btn {
+            background: linear-gradient(135deg, var(--kuromi-purple), var(--kuromi-pink));
+            border: none;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(157, 80, 187, 0.5);
+            transition: 0.2s;
+        }
+
+        .love-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(255, 128, 171, 0.7);
+        }
+
+        /* ====== CORAZÓN ====== */
         .heart {
             color: var(--kuromi-pink);
             animation: beat 1s infinite;
@@ -165,7 +224,7 @@
             }
 
             50% {
-                transform: scale(1.2);
+                transform: scale(1.25);
             }
 
             100% {
@@ -173,7 +232,7 @@
             }
         }
 
-        /* Personalización de Scroll */
+        /* ====== SCROLL ====== */
         ::-webkit-scrollbar {
             width: 4px;
         }
@@ -182,11 +241,336 @@
             background: var(--kuromi-purple);
             border-radius: 10px;
         }
+
+        /* MENSAJE SECRETO */
+        .secret-message {
+            position: fixed;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            background: linear-gradient(135deg, #9d50bb, #ff80ab);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.4s ease;
+            z-index: 2000;
+        }
+
+        .secret-message.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .secret-message {
+            position: fixed;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            background: linear-gradient(135deg, #1e0f26, #000);
+            color: white;
+            padding: 20px 28px;
+            border-radius: 25px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.4s ease;
+            z-index: 2000;
+            border: 1px solid var(--kuromi-purple);
+            box-shadow: 0 0 25px rgba(157, 80, 187, 0.4);
+        }
+
+        .secret-message.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .secret-text {
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+            color: var(--kuromi-pink);
+        }
+
+        /* brillo */
+        .secret-message::after {
+            content: "";
+            position: absolute;
+            inset: -3px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, var(--kuromi-purple), var(--kuromi-pink));
+            opacity: 0.2;
+            filter: blur(12px);
+            z-index: -1;
+        }
+
+        /* sparkle */
+        .sparkle {
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            font-size: 1.1rem;
+            animation: sparkle 1.5s infinite;
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.3);
+            }
+
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0);
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: translateY(-120px);
+                opacity: 0;
+            }
+        }
+
+        /* ===== POPUP MUSICAL BTS ===== */
+        .music-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            width: 320px;
+            background: linear-gradient(145deg, #160018, #000);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--kuromi-purple);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.4s ease;
+            z-index: 3000;
+        }
+
+        .music-popup.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+            pointer-events: auto;
+        }
+
+        .music-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            color: var(--kuromi-pink);
+            font-size: 0.85rem;
+        }
+
+        .music-header button {
+            background: none;
+            border: none;
+            color: var(--kuromi-pink);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .music-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+            z-index: 2999;
+        }
+
+        .music-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ===== POPUP MUSICAL PRO ===== */
+        .music-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 90%;
+            max-width: 420px;
+            background: linear-gradient(145deg, #160018, #000);
+            border-radius: 25px;
+            border: 1px solid var(--kuromi-purple);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.35s ease;
+            z-index: 3000;
+            padding: 20px;
+        }
+
+        .music-popup.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+
+        /* VIDEO 16:9 */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* TEXTO */
+        .music-text {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 1rem;
+            color: #ffd1f0;
+            font-weight: 500;
+            text-shadow:
+                0 0 8px rgba(255, 122, 200, 0.9),
+                0 0 15px rgba(180, 90, 255, 0.6);
+            animation: glowPulse 2.5s infinite ease-in-out;
+        }
+
+        /* BOTÓN CERRAR */
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: #ff7ac8;
+            font-size: 1.4rem;
+            cursor: pointer;
+            z-index: 10;
+            /* 🔥 esto la pone SOBRE el iframe */
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            box-shadow: 0 0 10px rgba(255, 122, 200, 0.8);
+        }
+
+        @keyframes glowPulse {
+            0% {
+                opacity: 0.85;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            100% {
+                opacity: 0.85;
+                transform: scale(1);
+            }
+        }
+
+        .music-popup::after {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: 28px;
+            border: 1px solid rgba(255, 122, 200, 0.5);
+            box-shadow: 0 0 25px rgba(255, 122, 200, 0.3);
+            pointer-events: none;
+        }
+
+        .love-message {
+            position: relative;
+            padding: 16px 50px 16px 24px;
+            /* espacio para la X */
+        }
+
+        /* ❌ */
+        .close-love {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #ff9adf;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-shadow: 0 0 8px rgba(255, 122, 200, 0.9);
+        }
+
+        .close-love:hover {
+            transform: scale(1.2);
+            color: #fff;
+        }
+
+        .love-message {
+            transition: opacity 0.3s ease;
+        }
+
+        .love-message {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .love-message.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .love-message {
+            position: fixed;
+            bottom: 140px;
+            /* 🔥 ajusta la altura (clave) */
+            left: 50%;
+            transform: translateX(-50%);
+
+            max-width: 90%;
+            padding: 16px 50px 16px 24px;
+
+            background: rgba(30, 0, 40, 0.85);
+            border-radius: 999px;
+
+            color: #ffd6f3;
+            font-size: 1rem;
+            text-align: center;
+
+            box-shadow: 0 0 25px rgba(255, 120, 200, 0.4);
+            backdrop-filter: blur(8px);
+
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+
+            z-index: 1000;
+            /* 🔥 para que quede sobre todo */
+        }
     </style>
 </head>
 
-<body>
 
+<body>
     <header>
         <div class="header-content">
             <h1>Especialmente <span>para tí</span></h1>
@@ -208,8 +592,8 @@
         </div>
 
         <div class="section-box">
-            <h2>🌙 Tu grupo favorito <img src="hehe.gif"
-                    style="width: 150px; display: block; margin: 0 auto 10px;"></h2>
+            <h2>🌙 Tu grupo favorito <img src="hehe.gif" style="width: 150px; display: block; margin: 0 auto 10px;">
+            </h2>
             <iframe data-testid="embed-iframe" style="border-radius:12px"
                 src="https://open.spotify.com/embed/playlist/37i9dQZF1DX08mhnhv6g9b?utm_source=generator" width="100%"
                 height="352" frameBorder="0" allowfullscreen=""
@@ -270,8 +654,8 @@
         </div>
 
         <div class="section-box">
-            <h2>Ante la adversidad <img src="troste.gif"
-                    style="width: 150px; display: block; margin: 0 auto 10px;"></h2>
+            <h2>Ante la adversidad <img src="troste.gif" style="width: 150px; display: block; margin: 0 auto 10px;">
+            </h2>
             <p>Sé que muchas veces no te sientes bien y te sientes en soledad, pero este mensaje es para ti, para que
                 recuerdes que eres especial, no hay mujer como tú. Dios está contigo en todo momento, él es tu apoyo
                 ante todos los desafíos. Tenlo siempre en cuenta <span class="heart">♥</span>.</p>
@@ -300,6 +684,102 @@
         </div>
 
     </div>
+    <div style="text-align:center; margin-bottom:60px;">
+        <button class="love-btn" onclick="showSecret()">Tócame 💜</button>
+    </div>
+    <script>
+        const btsVideos = [
+            "https://www.youtube.com/embed/384_y4CS9hI?si=nhKPtNSuwBCafqkd",
+            "https://www.youtube.com/embed/lvCB1SmzLW8?si=lD8Z1WowwKFsMq-e",
+            "https://www.youtube.com/embed/iZLt0FfCsKI?si=YxW6686CuQeh09ga",
+            "https://www.youtube.com/embed/RTz_LWyZSdI?si=TJwLKBWQ_jJGwQs8",
+            "https://www.youtube.com/embed/t9JbdvifAMw?si=pPF6W3RdtIjsvrIt",
+            "https://www.youtube.com/embed/Xy9heqcKLAI?si=KKxDTxPapherBHfa",
+            "https://www.youtube.com/embed/zdLvqiOmWq4?si=j6a7F4VgVtOUBEt_",
+            "https://www.youtube.com/embed/rBG5L7UsUxA?si=xGHstfrMiOTvGHUW",
+            "https://www.youtube.com/embed/m8MfJg68oCs?si=VPuIWuxvj4V75yMo",
+            "https://www.youtube.com/embed/evBAiaYal1o?si=9ZyHjyt8s62Txif3",
+            "https://www.youtube.com/embed/BVwAVbKYYeM?si=sGrcPNdo3SHHa3N8",
+            "https://www.youtube.com/embed/5Wn85Ge22FQ?si=l9aUVs6lxl6NCTn0",
+            "https://www.youtube.com/embed/GZjt_sA2eso?si=iZID0k6osVt8OBBC",
+            "https://www.youtube.com/embed/MBdVXkSdhwU?si=oPwQnHi-Ke_ZImhp",
+            "https://www.youtube.com/embed/kTlv5_Bs8aw?si=4zpfNXqAsAaNDVf2",
+            "https://www.youtube.com/embed/7C2z4GqqS5E?si=MQ7KFQLqotGSRs1v",
+            "https://www.youtube.com/embed/pBuZEGYXA6E?si=d8DNjIGHwevFlvy8"
+        ];
+
+        function closeLove() {
+            const msg = document.getElementById("loveMessage");
+            msg.style.opacity = "0";
+            setTimeout(() => msg.style.display = "none", 300);
+        }
+
+        function showSecret() {
+            const msg = document.getElementById("loveMessage");
+            const popup = document.getElementById("musicPopup");
+            const overlay = document.getElementById("musicOverlay");
+            const player = document.getElementById("btsPlayer");
+
+            msg.classList.add("show");
+
+            const randomVideo = btsVideos[Math.floor(Math.random() * btsVideos.length)];
+            player.src = randomVideo;
+
+            popup.classList.add("show");
+            overlay.classList.add("show");
+
+            const interval = setInterval(createHeart, 120);
+            setTimeout(() => clearInterval(interval), 5000);
+        }
+
+        function closeMusic() {
+            document.getElementById("musicPopup").classList.remove("show");
+            document.getElementById("musicOverlay").classList.remove("show");
+            document.getElementById("btsPlayer").src = "";
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            const hearts = ["💜", "🖤", "💕", "💖"];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.position = "fixed";
+            heart.style.bottom = "90px";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 22 + 16) + "px";
+            heart.style.opacity = "0.9";
+            heart.style.animation = "floatHeart 4s ease-out forwards";
+            heart.style.zIndex = 1999;
+            heart.style.pointerEvents = "none";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 4000);
+        }
+    </script>
+
+
+
+
+    <div class="love-message" id="loveMessage">
+        <button class="close-love" onclick="closeLove()">✕</button>
+
+        <span>💜 Siempre estaré contigo, incluso cuando no lo notes 💜</span>
+    </div>
+
+    <div id="musicPopup" class="music-popup">
+        <button class="close-btn" onclick="closeMusic()">✖</button>
+
+        <div class="video-wrapper">
+            <iframe id="btsPlayer" src="" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+
+        <p class="music-text">🎶 BTS para ti, con amor 💜</p>
+    </div>
+
+    <div id="musicOverlay" class="music-overlay" onclick="closeMusic()"></div>
+
 
 </body>
 
